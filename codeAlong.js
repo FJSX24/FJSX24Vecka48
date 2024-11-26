@@ -1,11 +1,30 @@
-console.log("Hello thuesday, FJSX24 and Syncron vs. asyncron code");
+// console.log("Hello thuesday, FJSX24 and Syncron vs. asyncron code");
 
 // Del 1: Synkron vs. Asynkron Kod
 
 // Förklaring av Synkron Kod
 
+// console.log("start");
+
+// function sum(a, b) {
+//   return a + b;
+// }
+
+// const result = sum(12, 38);
+
+// console.log("result: ", result);
+
+// console.log("slut");
 // ---------------------------------------------
 // Förklaring av Asynkron Kod
+
+// console.log("start");
+
+// setTimeout(() => {
+//   console.log("Detta exekveras efter 2 sek");
+// }, 2000);
+
+// console.log("slut");
 
 // ---------------------------------------------
 // Jämförelse mellan Synkron och Asynkron Kod
@@ -17,17 +36,68 @@ console.log("Hello thuesday, FJSX24 and Syncron vs. asyncron code");
 
 // Vad är en Callback-funktion?
 
+// function greeting(name) {
+//   console.log(`Hej ${name}`);
+// }
+
+// function getDataFromPromt(callback) {
+//   const firstName = prompt("Ange ditt namn:");
+//   callback(firstName);
+// }
+
+// getDataFromPromt(greeting);
+
 // ---------------------------------------------
 // Asynkrona Callback-exempel
 
 // Kodexempel 2: Använda setTimeout med Callback
+// console.log("start");
 
+// function fetchData(callback) {
+//   setTimeout(() => {
+//     const data = { id: 1, name: "Hans" };
+//     callback(data);
+//   }, 2000);
+// }
+
+// fetchData((result) => {
+//   console.log("Data mottagen: ", result);
+// });
+// // 2sekunder väntan innan den går till nästa i syncron
+
+// console.log("mål/slut");
 // ---------------------------------------------
 // ---------------------------------------------
 // ---------------------------------------------
 // Del 3: Problematiken med Callback Hell
 
 // Vad är Callback Hell?
+
+// function firstTask(callback) {
+//   setTimeout(() => {
+//     callback("resultatet från från FÖRSTA uppgiften/funktionen");
+//   }, 1000);
+// }
+
+// function secondTask(input, callback) {
+//   setTimeout(() => {
+//     callback(`${input} resultat från ANDRA uppgiften/funktionen`);
+//   }, 1000);
+// }
+
+// function thirdTask(input, callback) {
+//   setTimeout(() => {
+//     callback(`${input} resultat från TREDJE uppgiften/funktionen`);
+//   }, 1000);
+// }
+
+// firstTask((result1) => {
+//   secondTask(result1, (result2) => {
+//     thirdTask(result2, (resultat3) => {
+//       console.log("Slutresultat: ", resultat3);
+//     });
+//   });
+// });
 
 // ---------------------------------------------
 // ---------------------------------------------
@@ -37,6 +107,28 @@ console.log("Hello thuesday, FJSX24 and Syncron vs. asyncron code");
 // Uppgift:
 // Vi ska tillsammans skapa en funktion som hämtar data från en API med hjälp av fetch() och använder callbacks för att hantera asynkroniteten.
 
+// console.log("start");
+
+// function getData(url, callback) {
+//   fetch(url)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       callback(null, data);
+//     })
+//     .catch((err) => {
+//       callback(err, null);
+//     });
+// }
+
+// getData("https://jsonplaceholder.typicode.com/posts/1", function (error, data) {
+//   if (error) {
+//     console.error("Ett fel inträffade: ", error);
+//   } else {
+//     console.log("Data: ", data);
+//   }
+// });
+
+// console.log("slut/målinjen");
 // ---------------------------------------------
 // ---------------------------------------------
 // ---------------------------------------------
