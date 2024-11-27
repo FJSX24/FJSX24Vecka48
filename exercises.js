@@ -1,44 +1,43 @@
-// Övning 1: Enkel Asynkron Funktion med Callback (Lätt)
+// Övningar:
+
+// Övning 1: Skapa och Använda Enkla Promises (Lätt)
 
 // Uppgift:
-// Skapa en funktion delayLog som tar en sträng och en tid i millisekunder som argument.
-// Funktionen ska använda setTimeout för att logga strängen efter den angivna tiden.
-// Använd en callback för att meddela när loggningen är klar.
+// Skapa ett Promise som resolve:ar eller reject:ar baserat på en slumpmässig siffra.
+// Hantera resultatet med .then() och .catch().
+
+// -----------------------------------------------
+// Övning 2: Kedja Flera Promises (Medel)
+
+// Uppgift:
+// Implementera en sekvens av asynkrona operationer där varje steg beror på resultatet av föregående Promise.
+// Instruktioner:
+// Hämta en användare från https://jsonplaceholder.typicode.com/users/1.
+// Hämta deras inlägg från https://jsonplaceholder.typicode.com/posts?userId=1.
+// Logga användarens namn och titlarna på deras inlägg.
 
 // Mål:
-// Förstå hur man använder callbacks med setTimeout.
-// Praktisera enkel asynkronitet.
-// ------------------------------------------
-// Övning 2: Kedja Asynkrona Operationer (Medel)
+// Lära sig att kedja Promises för att hantera komplexa asynkrona flöden.
+// -----------------------------------------------
+// Övning 3: Hantera Flera Promises Samtidigt med Promise.all() (Svår)
 
 // Uppgift:
-// Använd fetch() för att hämta en användare från https://jsonplaceholder.typicode.com/users/1.
-// När användaren har hämtats, använd deras id för att hämta deras inlägg från https://jsonplaceholder.typicode.com/posts?userId=1.
-// Använd callbacks inom .then()-kedjan för att hantera resultaten och logga dem i konsolen.
-
-// Tips:
-// Använd separata funktioner för att hämta användaren och inläggen.
-// Hantera fel med .catch() och logga lämpliga felmeddelanden.
-
-// ------------------------------------------
-// Övning 3: Hantera Fel i Asynkron Kod med fetch() (Svår)
-
-// Uppgift:
-// Modifiera övning 2 för att inkludera robust felhantering.
-// Simulera ett fel genom att använda en felaktig URL eller genom att kasta ett fel om svarskoden inte är 200.
-// Se till att felmeddelanden loggas korrekt och att programmet inte kraschar.
-
-// ------------------------------------------
-// Övning 4: Bygga en Enkel Applikation med fetch() (Extra Svår)
-
-// Uppgift:
-// Bygg en enkel webbapplikation som:
-// Har en knapp "Hämta användare".
-// När knappen klickas, hämtar den en slumpmässig användare från https://jsonplaceholder.typicode.com/users.
-// Visar användarens namn och e-post på sidan.
-// Använd fetch() och hantera asynkroniteten med .then() och callbacks inom dem.
+// Använd Promise.all() för att köra flera asynkrona operationer parallellt och hantera resultaten när alla är klara.
+// Instruktioner:
+// Hämta data från:
+// https://jsonplaceholder.typicode.com/posts/1
+// https://jsonplaceholder.typicode.com/posts/2
+// https://jsonplaceholder.typicode.com/posts/3
+// Använd Promise.all() för att köra dessa fetch()-anrop parallellt.
+// När alla anrop är klara, logga titlarna på inläggen.
 
 // Mål:
-// Applicera kunskaperna i en faktisk applikation.
-// Förstå hur asynkronitet påverkar DOM-manipulation.
-// ------------------------------------------
+// Förstå hur man effektivt hanterar flera asynkrona operationer samtidigt med Promises.
+
+// -----------------------------------------------
+// Övning 4: Avancerad Code-Along: Bygg en Komplext Asynkron Flöde med Promises (Extra Svår)
+
+// Beskrivning:
+// Bygg en applikation som hämtar användardata, deras inlägg, och kommentarer till dessa inlägg, allt med Promises. Fokus ligger på att hantera komplexa kedjor och felhantering.
+
+// -----------------------------------------------
