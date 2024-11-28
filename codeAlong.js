@@ -288,6 +288,9 @@
 //   }
 
 // Använda async/await:
+async function getData() {}
+
+async function name(params) {}
 
 // -----------------------------------------------------
 // Hur Async/Await Bygger på Promises
