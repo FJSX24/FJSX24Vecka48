@@ -280,52 +280,70 @@
 
 // En funktion som returnerar en Promise
 // function fetchData() {
-//     return new Promise((resolve, reject) => {
-//       setTimeout(() => {
-//         resolve('Data hämtad!');
-//       }, 1000);
-//     });
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve("Data hämtad!");
+//     }, 1000);
+//   });
+// }
+
+// // Använda async/await:
+// async function getData() {
+//   try {
+//     const data = await fetchData();
+//     console.log("data: ", data);
+//   } catch (error) {
+//     console.error("Ett fel/error uppstod: ", error);
 //   }
+// }
 
-// Använda async/await:
-async function getData() {}
-
-async function name(params) {}
+// getData();
 
 // -----------------------------------------------------
 // Hur Async/Await Bygger på Promises
 
 // Kodexempel: Promise-kedja
 // function firstTask() {
-//     return new Promise((resolve, reject) => {
-//       setTimeout(() => {
-//         console.log('Första uppgiften klar.');
-//         resolve('Resultat från första uppgiften');
-//       }, 1000);
-//     });
-//   }
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log("Första uppgiften klar.");
+//       resolve("Resultat från första uppgiften");
+//     }, 1000);
+//   });
+// }
 
-//   function secondTask(data) {
-//     return new Promise((resolve, reject) => {
-//       setTimeout(() => {
-//         console.log('Andra uppgiften klar med data:', data);
-//         resolve('Resultat från andra uppgiften');
-//       }, 1000);
-//     });
-//   }
+// function secondTask(data) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log("Andra uppgiften klar med data:", data);
+//       resolve("Resultat från andra uppgiften");
+//     }, 1000);
+//   });
+// }
 
-//   firstTask()
-//     .then(result1 => {
-//       return secondTask(result1);
-//     })
-//     .then(result2 => {
-//       console.log('Alla uppgifter klara med resultat:', result2);
-//     })
-//     .catch(error => {
-//       console.error('Ett fel uppstod:', error);
-//     });
+// firstTask()
+//   .then((result1) => {
+//     return secondTask(result1);
+//   })
+//   .then((result2) => {
+//     console.log("Alla uppgifter klara med resultat:", result2);
+//   })
+//   .catch((error) => {
+//     console.error("Ett fel uppstod:", error);
+//   });
 
 //     Konverterat till async/await:
+// async function runTasks() {
+//   try {
+//     const result1 = await firstTask();
+//     const result2 = await secondTask(result1);
+//     console.log("Alla resultat/uppgifter är klara med resultatet: ", result2);
+//   } catch (error) {
+//     console.error("ett fel/error uppstod: ", error);
+//   }
+// }
+
+// runTasks();
 
 // -----------------------------------------------------
 // Konvertera Promise-kedjor till Async/Await
@@ -335,43 +353,62 @@ async function name(params) {}
 // Vi utgår från koden som hämtar användare, deras inlägg och kommentarer med Promises.
 
 // Kodexempel:
-// function getUser(userId) {
-//     return fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
-//       .then(response => response.json());
-//   }
+function getUser(userId) {
+  return fetch(`https://jsonplaceholder.typicode.com/users/${userId}`).then(
+    (response) => response.json()
+  );
+}
 
-//   function getPosts(userId) {
-//     return fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
-//       .then(response => response.json());
-//   }
+function getPosts(userId) {
+  return fetch(
+    `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
+  ).then((response) => response.json());
+}
 
-//   function getComments(postId) {
-//     return fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
-//       .then(response => response.json());
-//   }
+function getComments(postId) {
+  return fetch(
+    `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
+  ).then((response) => response.json());
+}
 
-//   getUser(1)
-//     .then(user => {
-//       console.log('Användare:', user.name);
-//       return getPosts(user.id);
-//     })
-//     .then(posts => {
-//       const post = posts[0];
-//       console.log('Inlägg:', post.title);
-//       return getComments(post.id);
-//     })
-//     .then(comments => {
-//       console.log('Kommentarer till inlägget:');
-//       comments.forEach(comment => {
-//         console.log(`- ${comment.name}: ${comment.body}`);
-//       });
-//     })
-//     .catch(error => {
-//       console.error('Ett fel uppstod:', error);
+// getUser(1)
+//   .then((user) => {
+//     console.log("Användare:", user.name);
+//     return getPosts(user.id);
+//   })
+//   .then((posts) => {
+//     const post = posts[0];
+//     console.log("Inlägg:", post.title);
+//     return getComments(post.id);
+//   })
+//   .then((comments) => {
+//     console.log("Kommentarer till inlägget:");
+//     comments.forEach((comment) => {
+//       console.log(`- ${comment.name}: ${comment.body}`);
 //     });
+//   })
+//   .catch((error) => {
+//     console.error("Ett fel uppstod:", error);
+//   });
 
 //     Steg 2: Konvertera till Async/Await
 // Kodexempel:
+async function displayUserData() {
+  try {
+    const user = await getUser(1);
+    console.log("user: ", user);
+
+    const posts = await getPosts(user.id);
+    console.log("posts: ", posts[0].title);
+
+    const comments = await getComments(posts[0].id);
+    console.log("comments: ", comments[3].email);
+  } catch (error) {
+    console.error("eroorrrrr!!!!!!!!: ", error);
+  }
+}
+
+displayUserData();
 
 // -----------------------------------------------------
 // Steg 3: Diskutera Fördelar
